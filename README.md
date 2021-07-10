@@ -1,4 +1,4 @@
-# discordpy-startup
+# Member List (Discord bot)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
