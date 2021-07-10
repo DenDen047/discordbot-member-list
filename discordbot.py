@@ -1,8 +1,14 @@
+import discord
 from discord.ext import commands
 import os
+import random
 import traceback
 
-bot = commands.Bot(command_prefix='/')
+
+intents = discord.Intents.default()
+intents.members = True
+
+bot = commands.Bot(intents=intents, command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
@@ -16,6 +22,15 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
+
+
+@bot.command()
+async def presentation_list(ctx):
+    members = [str(m) for m in ctx.guild.members if not m.bot]
+    random.shuffle(members)
+
+    result = '\n'.join(members)
+    await ctx.send(result)
 
 
 bot.run(token)
